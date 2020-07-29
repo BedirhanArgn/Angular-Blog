@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "blogapp-5cc83": {
+      "hosting": {
+        "angularblogapp": [
+          "blogapp-5cc83"
+        ]
+      }
+    }
+  }
+}
