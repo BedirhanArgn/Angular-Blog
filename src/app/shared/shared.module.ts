@@ -1,15 +1,20 @@
 import { NgModule } from '@angular/core';
+import {RouterModule} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MeterialModule } from '../meterial.module';
+import { NavbarComponent } from './navbar/navbar.component';
 @NgModule({
-  declarations: [],
+  declarations: [NavbarComponent],
   imports: [
     CommonModule,
-    MeterialModule
+    MeterialModule,
+    RouterModule
   ],
   exports:[
     CommonModule,
-    MeterialModule 
+    MeterialModule,
+    NavbarComponent ,
+    RouterModule
   ]
 })
 export class SharedModule { }
