@@ -6,9 +6,17 @@ import * as firebase from 'firebase/app';
   providedIn: 'root'
 })
 export class AuthService {
+  authState:any=null //user objesini tutaağız işimizi create yaparken hangi kullanıcıınn create yaptığını firebase'den getirecek.
+  constructor(public afAuth:AngularFireAuth) { 
+    this.afAuth.authState.subscribe(data=>this.authState=data) //burada authstateden hangi öğreniyoruz.
+  }
 
-  constructor(public afAuth:AngularFireAuth) { }
-
+  get authenticated():boolean {
+    return this.authState!==null //null değilse kullanıcı varsa 
+  }
+  get currentUserId():string {
+    return this.authenticated?this.authState.uid:null 
+  }
 
   login() {
     this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())

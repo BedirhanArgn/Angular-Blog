@@ -60,4 +60,21 @@ return this.postDoc.valueChanges()
   }
 */
   }
+  getPost(id:string){
+    return this.afs.doc<Post>('post/${id}')
+  }
+  create(data:Post){
+    this.postCollection.add(data)
+  }
+  delete(id:string){  
+    return this.getPost(id).delete()
+  }
+
+  update(id:string,formData){
+
+    return this.getPost(id).update(formData)
+  }
+
+
+
 }
