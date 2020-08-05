@@ -1,9 +1,31 @@
-<mat-form-field>
-    <input matInput placeholder="Post Title" [(ngModel)]="title">
-</mat-form-field>
-<br>
-<mat-form-field>
-    <textarea matInput placeholder="Post Content" [(ngModel)]="content"></textarea>
-</mat-form-field>
-<br>
-<button mat-raised-button color="accent" (click)="createPost()" [disabled]="!title||!content">Create Post</button>
+<section>
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Create a Post
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div [hidden]="!uploadPercent">
+                <!--Progress bar resim yokken gözükmesin-->
+                <input type="file" name="file" value="file" id="file" (change)="uploadImage($event)">
+                <mat-progress-bar mode="determinate" value={{uploadPercent | async}}></mat-progress-bar>
+            </div>
+
+            <div [hidden]="!image">
+                <img [src]="image || '//:0'">
+            </div>
+
+
+            <mat-form-field>
+                <input matInput placeholder="Post Title" [(ngModel)]="title">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <textarea matInput placeholder="Post Content" [(ngModel)]="content" rows="10"></textarea>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button color="accent" (click)="createPost()" [disabled]="!title||!content">{{ButtonText}}</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+</section>

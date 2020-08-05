@@ -14,7 +14,6 @@ export class PostService {
     ref.orderBy('published','desc')) 
   }
 
-
   getPosts() {
     return this.postCollection.snapshotChanges().pipe(map(actions=>{
       return actions.map(a=>{

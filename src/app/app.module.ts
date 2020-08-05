@@ -14,9 +14,7 @@ import{RouterModule,Routes} from '@angular/router';
 const routes:Routes= [
 {path:'',redirectTo:'/blog',pathMatch:'full'},
 {path:'',loadChildren:'./posts/post.module#PostsModulew'}
-
 ]
-
 
 @NgModule({
   declarations: [
