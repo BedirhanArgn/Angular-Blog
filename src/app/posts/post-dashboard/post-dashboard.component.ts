@@ -44,7 +44,7 @@ constructor(private auth:AuthService,private postService:PostService,private sto
     console.log(event);
     const file=event.target.files[0]
     //const id = Math.random().toString(36).substring(2);
-    const path='post/${file.name}'
+    const path='posts/${file.name}'
     if(file.type.split('/')[0]!=='image'){ //eğer yüklediğin soyanını type'ı image değil ise 
       return alert('Only image Files')
     } 

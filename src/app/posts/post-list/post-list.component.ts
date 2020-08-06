@@ -18,6 +18,7 @@ posts:Observable<Post[]>
   }
 
   delete(id:string) {
+    console.log(id)
     this.postService.delete(id)
   }
 

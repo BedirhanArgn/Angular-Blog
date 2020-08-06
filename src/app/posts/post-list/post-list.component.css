@@ -16,3 +16,8 @@ img {
     width: 100%;
     height: 40%;
 }
+
+mat-card-content:focus {
+    outline: none;
+    border: 0;
+}
