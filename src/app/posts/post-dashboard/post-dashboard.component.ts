@@ -18,11 +18,10 @@ content:string
 ButtonText:string="Create Post"
 uploadPercent:Observable<number> //progress bar için 
 downloadUrl:Observable<string>
-constructor(private auth:AuthService,private postService:PostService,private storage:AngularFireStorage) { }
-
+constructor(private auth:AuthService,private postService:PostService,private storage:AngularFireStorage) {}
   ngOnInit(): void {
   }
-
+  
   createPost() {
     const data={
       author:this.auth.authState.displayName || this.auth.authState.email,
@@ -44,16 +43,15 @@ constructor(private auth:AuthService,private postService:PostService,private sto
   uploadImage(event) {
     console.log(event);
     const file=event.target.files[0]
-    const id = Math.random().toString(36).substring(2);
-    const path='post/${id}'
-    console.log(id)
+    //const id = Math.random().toString(36).substring(2);
+    const path='post/${file.name}'
     if(file.type.split('/')[0]!=='image'){ //eğer yüklediğin soyanını type'ı image değil ise 
       return alert('Only image Files')
     } 
     else {
       const task = this.storage.upload(path, file);
       const ref = this.storage.ref(path);
-      this.uploadPercent = task.percentageChanges();
+      this.uploadPercent = task.percentageChanges(); //bar'ın yüzdesini ilerletiyor.
       console.log('Image uploaded!');
       task.snapshotChanges().pipe(
         finalize(() => {
@@ -61,8 +59,6 @@ constructor(private auth:AuthService,private postService:PostService,private sto
           this.downloadUrl.subscribe(url => (this.image = url));
         })
       ).subscribe();   
-
     }
-    
   }
 }

@@ -6,10 +6,11 @@
                     Create a Post
                 </mat-panel-title>
             </mat-expansion-panel-header>
+            <input type="file" name="file" value="file" id="file" (change)="uploadImage($event)">
+
             <div [hidden]="!uploadPercent">
-                <!--Progress bar resim yokken gözükmesin-->
-                <input type="file" name="file" value="file" id="file" (change)="uploadImage($event)">
-                <mat-progress-bar mode="determinate" value={{uploadPercent | async}}></mat-progress-bar>
+                <!--Progress bar resim yok  ken gözükmesin-->
+                <mat-progress-bar mode="determinate" value="{{uploadPercent | async}}"></mat-progress-bar>
             </div>
 
             <div [hidden]="!image">
