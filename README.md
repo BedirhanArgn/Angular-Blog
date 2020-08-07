@@ -1,7 +1,7 @@
 # Angularblogapp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.4.
-You can see this project with https://blogapp-5cc83.web.app/
+You can see this project: https://blogapp-5cc83.web.app/
 
 ## Development server
 
